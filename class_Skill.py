@@ -7,4 +7,3 @@ class Skill:
 
     def load_data(self) -> None:
         pass
-

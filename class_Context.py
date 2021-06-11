@@ -12,10 +12,3 @@ class Context:
             data.update(data_dict)
             file.seek(0)
             json.dump(data, file)
-
-# check_user(124455514, 'ssdaf')
-
-
-
-
-
