@@ -1,7 +1,7 @@
 import random
 import class_Skill as Skill
 
-class Humorintent(Skill):
+class HumorIntent(Skill):
     def get_random_joke(self):
         with open('anek_fixed.sql', 'r', encoding='Windows-1251') as file:
             random_joke = random.randint(0, 130263)
