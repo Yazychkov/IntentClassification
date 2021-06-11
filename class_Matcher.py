@@ -1,12 +1,12 @@
-
 import json
+
 
 class Matcher:
     def __init__(self, data):
         self.data = data
 
     def load_data(self):
-        with open('test.json') as file:
+        with open("test.json") as file:
             self.data = json.load(file)
             return self.data
 
