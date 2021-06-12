@@ -5,6 +5,7 @@ import main
 
 
 class TelegramChecker:  
+
     def __init__(self):
         self.updater = Updater(settings.API_KEY, use_context= True, request_kwargs= main.PROXY)
         self.dp = self.updater.dispatcher
