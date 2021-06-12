@@ -1,4 +1,4 @@
-import TelegramChecker
+import telegram_connector
 import settings
 import logging
 
@@ -17,5 +17,5 @@ PROXY = {
 
 
 if __name__ == "__main__":
-    telegram_bot = TelegramChecker.TelegramChecker()
+    telegram_bot = telegram_connector.TelegramChecker()
     telegram_bot.run()
