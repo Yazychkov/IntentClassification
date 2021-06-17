@@ -1,5 +1,5 @@
 from random import choice
-from IntentClassification.skill import Skill
+from source.skill import Skill
 
 
 class HumorIntent(Skill):
@@ -8,11 +8,11 @@ class HumorIntent(Skill):
         self.load_data()
 
     def load_data(self) -> None:
-        with open("anek_fixed.sql", "r", encoding="Windows-1251") as file:
+        with open("../data/anek_fixed.sql", "r", encoding="Windows-1251") as file:
             for line in file:
                 self.data.append(line)
 
-    def get_answer(self) -> str:
+    def get_answer(self, phrase, context=None) -> str:
         return choice(self.data)
 
 

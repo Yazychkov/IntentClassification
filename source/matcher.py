@@ -7,7 +7,7 @@ class Matcher:
         self.load_data()
 
     def load_data(self):
-        with open("test.json", "r") as file:
+        with open("../data/skill_phrases.json", "r") as file:
             self.data = json.load(file)
 
     def match(self, phrase, context=None):

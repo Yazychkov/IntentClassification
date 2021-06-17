@@ -1,13 +1,13 @@
 from matcher import Matcher
 
 
-from intent.humor import HumorIntent
-from intent.weather import WeatherIntent
-from intent.video import VideoIntent
-from intent.calculator import CalcIntent
-from intent.translator import TranslatorIntent
-from intent.location import LocationIntent
-from intent.search import SearchIntent
+from classes.humor import HumorIntent
+from classes.weather import WeatherIntent
+from classes.video import VideoIntent
+from classes.calculator import CalcIntent
+from classes.translator import TranslatorIntent
+from classes.location import LocationIntent
+from classes.search import SearchIntent
 
 
 class Skillserver:
@@ -26,7 +26,7 @@ class Skillserver:
     def check_intent(self, text):
         return self.intent_dict.get(text)
 
-    def get_answer(self, phrase) -> str:
+    def get_answer(self, phrase, context=None) -> str:
         res = self.matcher.match(phrase)
         intent_result = self.check_intent(res)
         intend_do = intent_result.get_answer()
