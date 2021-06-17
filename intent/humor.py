@@ -1,21 +1,19 @@
-import random
-from IntentClassification.Skill import Skill
+from random import choice
+from IntentClassification.skill import Skill
 
 
 class HumorIntent(Skill):
     def __init__(self):
-        self.file = open("anek_fixed.sql", "r", encoding="Windows-1251")
+        self.data = list()
+        self.load_data()
 
     def load_data(self) -> None:
-        self.file
+        with open("anek_fixed.sql", "r", encoding="Windows-1251") as file:
+            for line in file:
+                self.data.append(line)
 
     def get_answer(self) -> str:
-        random_joke = random.randint(0, 130263)
-        cnt = 0
-        for joke in self.file:
-            cnt += 1
-            if cnt == random_joke:
-                return joke
+        return choice(self.data)
 
 
 if __name__ == "__main__":
