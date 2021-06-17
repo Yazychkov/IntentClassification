@@ -2,19 +2,27 @@ import json
 
 
 class Context:
-    def check_user(self, chat_id: int, name: str):
-        data_dict = {"{}".format(chat_id): "{}".format(name)}
+    def __init__(self, chat_id: int, name: str):
+        self.name = name
+        self.chat_id = chat_id
+
+    def save(self, chat_id, name):
+        data_dict = {"chat_id": chat_id, "name": name}
         with open("user_list.json", "r+") as file:
             data = json.load(file)
-            if chat_id in data:
-                file.seek(0)
-            else:
-                data.update(data_dict)
-                file.seek(0)
-                json.dump(data, file)
-                file.truncate()
+            data.append(data_dict)
+            file.seek(0)
+            json.dump(data, file, indent=2)
+            file.truncate()
+
+    def load(self, chat_id):
+        with open("user_list.json", "r") as file:
+            data = json.load(file)
+            for people in data:
+                if people["chat_id"] == chat_id:
+                    return people["name"]
 
 
 if __name__ == "__main__":
-    exp = Context()
-    exp.check_user(12456463, "fsfds")
+    exp = Context(7778, "fsfds")
+    print(exp.load(7778))

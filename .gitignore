@@ -4,5 +4,4 @@ settings.py
 .idea/
 env/
 __pycache__/
-*.sql
 *.json

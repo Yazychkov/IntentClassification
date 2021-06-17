@@ -24,8 +24,7 @@ class Skillserver:
         }
 
     def check_intent(self, text):
-        if text in self.intent_dict:
-            return self.intent_dict[text]
+        return self.intent_dict.get(text)
 
     def get_answer(self, phrase) -> str:
         res = self.matcher.match(phrase)
