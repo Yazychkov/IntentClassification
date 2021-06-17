@@ -5,22 +5,26 @@ from natasha import (
     NewsMorphTagger,
     NewsNERTagger,
     AddrExtractor,
-    Doc,
+    Doc
 )
 
 
 class EntityParser:
-    def __init__(self, replica: str):
-        self.replica = replica.title()
-        self.doc = Doc(self.replica)
+    def __init__(self):
         self.segmenter = Segmenter()
         self.morph_vocab = MorphVocab()
         self.addr_extractor = AddrExtractor(self.morph_vocab)
         emb = NewsEmbedding()
         self.morph_tagger = NewsMorphTagger(emb)
         self.ner_tagger = NewsNERTagger(emb)
-
-    def parser(self):
+    
+    def load_data(self) -> None:
+        pass
+    
+    
+    def get_answer(self, phrase: str):
+        self.replica = phrase.title()
+        self.doc = Doc(self.replica)
         self.doc.segment(self.segmenter)
         self.doc.tag_morph(self.morph_tagger)
         self.doc.tag_ner(self.ner_tagger)

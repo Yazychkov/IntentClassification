@@ -1,27 +1,37 @@
 import requests
 import entity_parser
-import dictionary
 import settings
+import json
+import dictionary_letters
 
 
 class WeatherIntent:
+    def __init__(self):
+        with open('city_list.json', 'r', encoding='utf-8') as f:
+            self.city_list = json.load(f)
+        
+
+
+    def load_data(self) -> None:
+        self.city_dict = {loc: el_list[1] for el_list in self.city_list for loc in el_list[0]}
+        
+
     def translit(self, city_name: str):
         for key in city_name:
-            city_name = city_name.replace(key, dictionary.letters_dict[key])
+            city_name = city_name.replace(key, dictionary_letters.letters_dict[key])
         return city_name
 
-    def det_weather(self, replica: str):
+    def get_answer(self, phrase: str):
 
-        replica = entity_parser.EntityParser(text)
-        location = replica.parser()
+        data = entity_parser.EntityParser()
+        location = data.get_answer(phrase)
         city = location["LOC"]
         if not city:
             return "В вашей фразе я не смог распознать город"
         else:
             city_name = city[0]
-            letter_city_name = city_name[0]
-            if dictionary.city_dict[letter_city_name].get(city_name):
-                city_name = dictionary.city_dict[letter_city_name][city_name]
+            if self.city_dict.get(city_name):
+                city_name = self.city_dict[city_name]
                 city = city_name
                 city_name = self.translit(city_name)
                 try:
@@ -59,5 +69,6 @@ class WeatherIntent:
 
 if __name__ == "__main__":
     test = WeatherIntent()
-    text = "сколько градусов в мск"
-    print(test.det_weather(text))
+    test.load_data()
+    text = "погода в нижнем новгороде"
+    print(test.get_answer(text))
