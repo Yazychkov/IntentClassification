@@ -1,13 +1,13 @@
 from matcher import Matcher
 
 
-from classes.humor import HumorIntent
-from classes.weather import WeatherIntent
-from classes.video import VideoIntent
-from classes.calculator import CalcIntent
-from classes.translator import TranslatorIntent
-from classes.location import LocationIntent
-from classes.search import SearchIntent
+from skills.humor import HumorIntent
+from skills.weather import WeatherIntent
+from skills.video import VideoIntent
+from skills.calculator import CalcIntent
+from skills.translator import TranslatorIntent
+from skills.location import LocationIntent
+from skills.search import SearchIntent
 
 
 class Skillserver:
