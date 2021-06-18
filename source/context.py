@@ -8,7 +8,7 @@ class Context:
 
     def save(self, chat_id, name):
         data_dict = {"chat_id": chat_id, "name": name}
-        with open("user_list.json", "r+") as file:
+        with open("../data/user_list.json", "r+") as file:
             data = json.load(file)
             data.append(data_dict)
             file.seek(0)
@@ -16,7 +16,7 @@ class Context:
             file.truncate()
 
     def load(self, chat_id):
-        with open("user_list.json", "r") as file:
+        with open("../data/user_list.json", "r") as file:
             data = json.load(file)
             for people in data:
                 if people["chat_id"] == chat_id:

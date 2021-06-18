@@ -3,5 +3,5 @@ settings.py
 .vscode/
 .idea/
 env/
+venv/
 __pycache__/
-*.json
