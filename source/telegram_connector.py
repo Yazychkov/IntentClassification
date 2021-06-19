@@ -2,7 +2,7 @@ from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 import logging
 import settings
 import main
-
+from skillserver import Skillserver
 
 class TelegramChecker:  
 
@@ -27,4 +27,5 @@ class TelegramChecker:
     
     def process(self,update, context):
         text= update.message.text
-        update.message.reply_text(text)
+        exp1 = Skillserver()
+        update.message.reply_text(exp1.get_answer(text))
