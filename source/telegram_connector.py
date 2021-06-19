@@ -1,13 +1,12 @@
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 import logging
 import settings
-import main
 from skillserver import Skillserver
 
 class TelegramChecker:  
 
     def __init__(self):
-        self.updater = Updater(settings.API_KEY, use_context= True, request_kwargs= main.PROXY)
+        self.updater = Updater(settings.API_KEY, use_context= True)
         self.dp = self.updater.dispatcher
    
    
