@@ -7,9 +7,11 @@ from natasha import (
     AddrExtractor,
     Doc
 )
+from skill import Skill
 
 
-class EntityParser:
+
+class EntityParser(Skill):
     def __init__(self):
         self.segmenter = Segmenter()
         self.morph_vocab = MorphVocab()
@@ -22,7 +24,7 @@ class EntityParser:
         pass
     
     
-    def get_answer(self, phrase: str):
+    def get_answer(self, phrase, context=None) -> str:
         self.replica = phrase.title()
         self.doc = Doc(self.replica)
         self.doc.segment(self.segmenter)

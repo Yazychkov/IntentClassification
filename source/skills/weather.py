@@ -10,10 +10,10 @@ class WeatherIntent(Skill):
 
 
     def load_data(self) -> None:
-        with open('..\IntentClassification\data\city_list.json', 'r', encoding='utf-8') as f:
+        with open('..\data\city_list.json', 'r', encoding='utf-8') as f:
             self.city_list = json.load(f)
         self.city_dict = {loc: el_list[1] for el_list in self.city_list for loc in el_list[0]}
-        with open('..\IntentClassification\data\dictionary_letters.json', 'r', encoding='utf-8') as f:
+        with open('..\data\dictionary_letters.json', 'r', encoding='utf-8') as f:
             self.letters_dict = json.load(f)
         
 

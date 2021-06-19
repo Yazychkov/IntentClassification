@@ -8,7 +8,7 @@ class HumorIntent(Skill):
         self.load_data()
 
     def load_data(self) -> None:
-        with open("..\IntentClassification\data\\anek_fixed.sql", "r", encoding="Windows-1251") as file:
+        with open("..\data\\anek_fixed.sql", "r", encoding="Windows-1251") as file:
             for line in file:
                 self.data.append(line)
 
