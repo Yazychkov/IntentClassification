@@ -2,6 +2,8 @@ import requests
 import json
 from skill import Skill
 import settings
+from utils import get_data_path
+import os
 
 
 class WeatherIntent(Skill):
@@ -10,10 +12,10 @@ class WeatherIntent(Skill):
 
 
     def load_data(self) -> None:
-        with open('..\data\city_list.json', 'r', encoding='utf-8') as f:
+        with open(os.path.join(get_data_path(),'city_list.json'), 'r', encoding='utf-8') as f:
             self.city_list = json.load(f)
         self.city_dict = {loc: el_list[1] for el_list in self.city_list for loc in el_list[0]}
-        with open('..\data\dictionary_letters.json', 'r', encoding='utf-8') as f:
+        with open(os.path.join(get_data_path(), 'dictionary_letters.json'), 'r', encoding='utf-8') as f:
             self.letters_dict = json.load(f)
         
 
@@ -23,7 +25,7 @@ class WeatherIntent(Skill):
         return city_name
 
     def get_answer(self, phrase, context) -> str:
-        city = context["LOC"]
+        city = context['res_parser']["LOC"]
         if not city:
             return "В вашей фразе я не смог распознать город"
         else:

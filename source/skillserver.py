@@ -31,7 +31,9 @@ class Skillserver:
         res = self.matcher.match(phrase)
         intent_result = self.check_intent(res)
         if intent_result:
-            context = self.parser.get_answer(phrase)
+            context = dict()
+            res_parser = self.parser.get_answer(phrase)
+            context['res_parser'] = res_parser
             intend_do = intent_result.get_answer(phrase, context)
             return intend_do
         else:

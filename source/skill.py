@@ -10,5 +10,5 @@ class Skill(metaclass=ABCMeta):
         pass
 
     @abstractmethod
-    def get_answer(self, phrase, context=None, res_parser = None) -> str:
+    def get_answer(self, phrase, context=None) -> str:
         pass
