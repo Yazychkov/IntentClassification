@@ -29,9 +29,13 @@ class WeatherIntent(Skill):
         if not city:
             return "В вашей фразе я не смог распознать город"
         else:
-            city_name = city[0]
-            if self.city_dict.get(city_name):
-                city_name = self.city_dict[city_name]
+            city_name = None
+            for location in city:
+                if self.city_dict.get(location) and (city_name is None):
+                    city_name = self.city_dict[location]
+                elif self.city_dict.get(location):
+                    return "В вашей фразе я распознал несколько городов"
+            if city_name:
                 city = city_name
                 city_name = self.translit(city_name)
                 try:
@@ -69,5 +73,5 @@ class WeatherIntent(Skill):
 
 if __name__ == "__main__":
     test = WeatherIntent()
-    text = "погода в мск"
+    text = "погода в москве"
     print(test.get_answer(text))
