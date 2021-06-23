@@ -8,6 +8,7 @@ class TelegramChecker:
     def __init__(self):
         self.updater = Updater(settings.API_KEY, use_context=True)
         self.dp = self.updater.dispatcher
+        self.serverskill = Skillserver()
 
     def run(self):
         logging.info("START")
@@ -23,6 +24,10 @@ class TelegramChecker:
 
     def process(self, update, context):
         text = update.message.text
-        exp1 = Skillserver()
-        answer = exp1.get_answer(text)
-        update.message.reply_text(answer)
+        try:
+            answer = self.serverskill.get_answer(text)
+            update.message.reply_text(answer)
+        except:
+            update.message.reply_text(
+                "Технические неполадки, пожалуйста, попробуйте позднее."
+            )

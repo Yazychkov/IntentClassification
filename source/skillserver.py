@@ -3,6 +3,7 @@ from matcher import Matcher
 
 from skills.humor import HumorIntent
 from skills.weather import WeatherIntent
+
 # from skills.video import VideoIntent
 # from skills.calculator import CalcIntent
 # from skills.translator import TranslatorIntent
@@ -10,12 +11,13 @@ from skills.weather import WeatherIntent
 # from skills.search import SearchIntent
 from skills.entity_parser import EntityParser
 
+
 class Skillserver:
     def __init__(self):
         self.matcher = Matcher()
         self.parser = EntityParser()
         self.intent_dict = {
-             "weather": WeatherIntent(),
+            "weather": WeatherIntent(),
             # "video": VideoIntent(),
             # "calculator": CalcIntent(),
             # "translator": TranslatorIntent(),
@@ -27,19 +29,18 @@ class Skillserver:
     def check_intent(self, text):
         return self.intent_dict.get(text)
 
-    def get_answer(self, phrase, context=None ) -> str:
+    def get_answer(self, phrase, context=None) -> str:
         res = self.matcher.match(phrase)
         intent_result = self.check_intent(res)
         if intent_result:
-            context = dict()
+            if not context:
+                context = dict()
             res_parser = self.parser.get_answer(phrase)
-            context['res_parser'] = res_parser
+            context["res_parser"] = res_parser
             intend_do = intent_result.get_answer(phrase, context)
             return intend_do
         else:
             return "Я не смог распознать ваше намерение, пожалуйста, попробуйте переформулировать"
-        
-
 
 
 if __name__ == "__main__":
