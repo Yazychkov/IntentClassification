@@ -1,7 +1,6 @@
 import requests
 import json
 from skill import Skill
-import settings
 from utils import get_data_path
 import os
 
@@ -54,7 +53,7 @@ class WeatherIntent(Skill):
                     "q": city_name,
                     "units": "metric",
                     "lang": "ru",
-                    "APPID": settings.appid,
+                    "APPID": os.environ['API_KEY_WEATHER'],
                 },
             )
             data = res.json()
