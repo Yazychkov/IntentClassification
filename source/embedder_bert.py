@@ -1,6 +1,7 @@
 import torch
 from transformers import AutoTokenizer, AutoModel
 import numpy
+from utils import get_data_model_path
 
 
 class Embedder:
@@ -8,8 +9,8 @@ class Embedder:
         self.load_model()
 
     def load_model(self):
-        self.tokenizer = AutoTokenizer.from_pretrained("cointegrated/rubert-tiny")
-        self.model = AutoModel.from_pretrained("cointegrated/rubert-tiny")
+        self.tokenizer = AutoTokenizer.from_pretrained("cointegrated/rubert-tiny", cache_dir = get_data_model_path())
+        self.model = AutoModel.from_pretrained("cointegrated/rubert-tiny", cache_dir = get_data_model_path())
 
     def compute_embeddings(self, phrases: list) -> numpy.ndarray:
         t = self.tokenizer(phrases, padding=True, truncation=True, return_tensors="pt")
@@ -24,6 +25,7 @@ class Embedder:
 
 
 if __name__ == "__main__":
+    print(get_data_model_path())
     exp = Embedder()
     text = [
         "погода в москве",  
