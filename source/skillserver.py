@@ -9,7 +9,7 @@ from skills.weather import WeatherIntent
 # from skills.translator import TranslatorIntent
 # from skills.location import LocationIntent
 # from skills.search import SearchIntent
-from skills.entity_parser import EntityParser
+from entity_parser import EntityParser
 
 
 class Skillserver:
@@ -45,4 +45,4 @@ class Skillserver:
 
 if __name__ == "__main__":
     exp1 = Skillserver()
-    print(exp1.get_answer("погода"))
+    print(exp1.get_answer("погода в москве"))
