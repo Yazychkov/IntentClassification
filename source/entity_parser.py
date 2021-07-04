@@ -4,10 +4,13 @@ from natasha import (
     NewsEmbedding,
     NewsMorphTagger,
     NewsNERTagger,
-    Doc
+    Doc,
 )
 from skill import Skill
-
+from utils import get_data_path
+import os
+import json
+from fuzzysearch import find_near_matches
 
 
 class EntityParser(Skill):
@@ -17,11 +20,15 @@ class EntityParser(Skill):
         emb = NewsEmbedding()
         self.morph_tagger = NewsMorphTagger(emb)
         self.ner_tagger = NewsNERTagger(emb)
-    
+        self.language_dict = dict()
+        self.load_data()
+
     def load_data(self) -> None:
-        pass
-    
-    
+        with open(
+            os.path.join(get_data_path(), "language.json"), "r", encoding="utf-8"
+        ) as f:
+            self.language_dict = json.load(f)
+
     def get_answer(self, phrase, context=None) -> str:
         phrase = phrase.title()
         self.doc = Doc(phrase)
@@ -35,4 +42,21 @@ class EntityParser(Skill):
         for span in self.doc.spans:
             if span.type == "LOC":
                 data["LOC"].append(span.normal)
+        phrase = phrase.lower()
+        match_lang = None
+
+        for key, value in self.language_dict.items():
+            match_lang = find_near_matches(key, phrase, max_l_dist=0)
+            if match_lang:
+                data["lang"] = {}
+                data["lang"]["translate"] = phrase[match_lang[0].end + 1 :]
+                data["lang"]["language"] = value
+                break
+        if not match_lang:
+            value, key = None, None
         return data
+
+
+if __name__ == "__main__":
+    exp1 = EntityParser()
+    print(exp1.get_answer("переведи на английский погода в москве"))
