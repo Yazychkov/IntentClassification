@@ -44,7 +44,6 @@ class EntityParser(Skill):
                 data["LOC"].append(span.normal)
         phrase = phrase.lower()
         match_lang = None
-
         for key, value in self.language_dict.items():
             match_lang = find_near_matches(key, phrase, max_l_dist=0)
             if match_lang:
@@ -54,9 +53,13 @@ class EntityParser(Skill):
                 break
         if not match_lang:
             value, key = None, None
+        if not data["LOC"]:
+           del data["LOC"]
+        if not data:
+            return None
         return data
 
 
 if __name__ == "__main__":
     exp1 = EntityParser()
-    print(exp1.get_answer("переведи на английский погода в москве"))
+    print(exp1.get_answer("переведи на погода в "))

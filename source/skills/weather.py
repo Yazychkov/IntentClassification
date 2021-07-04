@@ -33,9 +33,9 @@ class WeatherIntent(Skill):
         return city_name
 
     def get_answer(self, phrase, context) -> str:
-        city = context["res_parser"]["LOC"]
-        if not city:
+        if not context:
             return "В вашей фразе я не смог распознать город"
+        city = context["res_parser"]["LOC"]
         city_name = None
         for location in city:
             if self.city_dict.get(location) and (city_name is None):

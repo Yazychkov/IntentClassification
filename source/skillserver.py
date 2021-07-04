@@ -36,7 +36,8 @@ class Skillserver:
             if not context:
                 context = dict()
             res_parser = self.parser.get_answer(phrase)
-            context["res_parser"] = res_parser
+            if res_parser:
+                context["res_parser"] = res_parser
             intend_do = intent_result.get_answer(phrase, context)
             return intend_do
         else:
@@ -45,4 +46,4 @@ class Skillserver:
 
 if __name__ == "__main__":
     exp1 = Skillserver()
-    print(exp1.get_answer("погода в москве"))
+    print(exp1.get_answer("погода"))
