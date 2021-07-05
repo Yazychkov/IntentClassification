@@ -50,7 +50,12 @@ class EntityParser(Skill):
                 data["lang"] = {}
                 data["lang"]["translate"] = phrase[match_lang[0].end + 1 :]
                 if not data["lang"]["translate"]:
-                    data["lang"]["translate"] = phrase[:match_lang[0].start - 1]
+                    phrase = phrase[:match_lang[0].start - 1]
+                    phrase_list = phrase.split()
+                    if phrase_list[-1] == 'на':
+                        del phrase_list[-1]
+                        phrase = ' '.join(phrase_list)
+                    data["lang"]["translate"] = phrase
                 data["lang"]["language"] = value
                 break
         if not match_lang:
@@ -64,4 +69,4 @@ class EntityParser(Skill):
 
 if __name__ == "__main__":
     exp1 = EntityParser()
-    print(exp1.get_answer("переведи  погода на английский"))
+    print(exp1.get_answer("переведи  на английский слово погода"))
