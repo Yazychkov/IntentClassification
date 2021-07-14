@@ -38,3 +38,4 @@ class VideoIntent(Skill):
 if __name__ == "__main__":
     video1 = VideoIntent()
     print(video1.get_answer("video"))
+
