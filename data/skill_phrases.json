@@ -1,6 +1,8 @@
 {
     "расскажи анекдот":"humor",
     "анекдот":"humor",
+    "рассмеши":"humor",
+    "мне грустно":"humor",
     "погода":"weather",
     "погода в ":"weather",
     "сколько градусов в":"weather",
@@ -8,6 +10,19 @@
     "какая сечас температура в":"weather",
     "можешь мне сказать сколько сейчас ощущается градусов":"weather",
     "текущая погода":"weather",
-    "какая сейчас стоит температура в городе":"weather"
-
+    "какая сейчас стоит температура в городе":"weather",
+    "видео":"video",
+    "найти видео":"video",
+    "youtube":"video",
+    "ютуб":"video",
+    "гора в переводе на английский":"translator",
+    "перевод на английский":"translator",
+    "море на английском языке":"translator",
+    "английский язык":"translator",
+    "table to russian":"translator",
+    "я люблю перевод на немецкий":"translator",
+    "перевод на испанский":"translator",
+    "translate to russian":"translator",
+    "translate to spanish":"translator",
+    "country to german":"translator"
 }
