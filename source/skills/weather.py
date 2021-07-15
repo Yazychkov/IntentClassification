@@ -1,7 +1,7 @@
 import requests
 import json
-from skill import Skill
-from utils import get_data_path
+from source.skill import Skill
+from source.utils import get_data_path
 import os
 
 
@@ -32,7 +32,7 @@ class WeatherIntent(Skill):
         )
         return city_name
 
-    def get_answer(self, phrase, context) -> str:
+    def get_answer(self, phrase, context = None) -> str:
         if not context or not context["res_parser"].get('LOC'):
             return "В вашей фразе я не смог распознать город"
         city = context["res_parser"]["LOC"]
@@ -78,4 +78,6 @@ class WeatherIntent(Skill):
 if __name__ == "__main__":
     test = WeatherIntent()
     text = "погода в москве"
-    print(test.get_answer(text))
+    context = {}
+    context["res_parser"] = {'LOC': ['Москва']}
+    print(test.get_answer(text,context))
