@@ -4,6 +4,7 @@ import json
 import os
 from source.skill import Skill
 
+
 class TranslatorIntent(Skill):
     def __init__(self):
         self.tr = Translator()
@@ -36,5 +37,5 @@ class TranslatorIntent(Skill):
 
 if __name__ == "__main__":
     tr1 = TranslatorIntent()
-    tr1.load_data()
+    print(tr1.load_data())
     print(tr1.get_answer("перевод на испанский"))
