@@ -45,4 +45,4 @@ class Skillserver:
 
 if __name__ == "__main__":
     exp1 = Skillserver()
-    print(exp1.get_answer("видео"))
+    print(exp1.get_answer("погода в"))
