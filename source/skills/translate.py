@@ -12,11 +12,9 @@ class TranslatorIntent(Skill):
         self.load_data()
 
     def load_data(self) -> None:
-        with open(os.path.join(get_data_path(), "languages.json"), "r") as file:
+        with open(os.path.join(get_data_path(), "languages.json"), 'r') as file:
             lang = json.load(file)
-            self.lang_reversed = {
-                value: key for key, value in lang.items()
-            }  # ключ и значение меняются местами
+            self.lang_reversed = {value: key for key, value in lang.items()}
 
     def get_custom_sim(self, phrase) -> float:
         pass
@@ -25,23 +23,15 @@ class TranslatorIntent(Skill):
         'фраза - перевод на какой язык: "я люблю перевод на немецкий"'
         destination_language = str()
         phrase_list = phrase.lower().split()
-        phrase_for_leng = phrase_list[
-            -1:
-        ]  # список, элемент которого - язык, на который переводим
-        del phrase_list[-2:]  # удаляем все, кроме фразы, которую надо перевести
-        phrase_str = " ".join(phrase_list)
-        inter_result = self.tr.translate(
-            phrase_for_leng[0], dest="en"
-        )  # перевод на англ. название языка
-        if inter_result.text.lower() in self.lang_reversed:  # поиск языка в словаре
+        phrase_for_leng = phrase_list[-1:]
+        del phrase_list[-2:]
+        phrase_str = ' '.join(phrase_list)
+        inter_result = self.tr.translate(phrase_for_leng[0], dest='en')
+        if inter_result.text.lower() in self.lang_reversed:
             destination_language += self.lang_reversed.get(inter_result.text.lower())
         else:
-            return (
-                "Проверьте правильность написания языка, на который вы хотите перевести"
-            )
-        result = self.tr.translate(
-            phrase_str, dest=destination_language
-        )  # перевод на найденный язык
+            return 'Проверьте правильность написания языка, на который вы хотите перевести'
+        result = self.tr.translate(phrase_str, dest=destination_language)
         return result.text
 
 
