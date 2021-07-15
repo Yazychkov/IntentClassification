@@ -24,3 +24,4 @@ class Matcher:
 if __name__ == "__main__":
     exp = Matcher()
     print(exp.match("анекдот"))
+

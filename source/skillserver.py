@@ -3,10 +3,10 @@ from matcher import Matcher
 
 from skills.humor import HumorIntent
 from skills.weather import WeatherIntent
+from skills.video import VideoIntent
+from skills.translate import TranslatorIntent
 
-# from skills.video import VideoIntent
 # from skills.calculator import CalcIntent
-# from skills.translator import TranslatorIntent
 # from skills.location import LocationIntent
 # from skills.search import SearchIntent
 from entity_parser import EntityParser
@@ -18,9 +18,9 @@ class Skillserver:
         self.parser = EntityParser()
         self.intent_dict = {
             "weather": WeatherIntent(),
-            # "video": VideoIntent(),
+            "video": VideoIntent(),
             # "calculator": CalcIntent(),
-            # "translator": TranslatorIntent(),
+            "translator": TranslatorIntent(),
             # "search": SearchIntent(),
             # "location": LocationIntent(),
             "humor": HumorIntent(),

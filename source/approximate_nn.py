@@ -10,13 +10,10 @@ import pprint
 class Approximator:
     def __init__(self) -> None:
         self.bert = Embedder()
-        self.speller = YandexSpeller()
 
         self.text = list()
-        self.text_intent = list()
         self.phrases = np.ndarray
         self.matcher = dict()
-        self.phrase = str()
 
         self.load_data()
         self.create_vectors()
