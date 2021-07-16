@@ -18,9 +18,13 @@ class Matcher:
             self.data = json.load(file)
 
     def match(self, phrase, context=None):
-        return self.data.get(self.knn.load_to_bert(phrase))
+        if self.knn.load_to_bert(phrase) in self.data:
+            return self.data.get(self.knn.load_to_bert(phrase))
+        else:
+            return False
 
 
 if __name__ == "__main__":
     exp = Matcher()
     print(exp.match("анекдот"))
+
