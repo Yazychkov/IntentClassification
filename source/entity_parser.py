@@ -69,4 +69,4 @@ class EntityParser(Skill):
 
 if __name__ == "__main__":
     exp1 = EntityParser()
-    print(exp1.get_answer("переведи  на английский слово погода"))
+    print(exp1.get_answer("перевод на испанский"))
