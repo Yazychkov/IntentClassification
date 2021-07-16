@@ -2,8 +2,8 @@ import os
 import json
 import nmslib
 import numpy as np
-from utils import get_data_path
-from embedder_bert import Embedder
+from source.utils import get_data_path
+from source.embedder_bert import Embedder
 import pprint
 
 
@@ -50,4 +50,4 @@ class Approximator:
 
 if __name__ == "__main__":
     exp = Approximator()
-    pprint.pprint(exp.load_to_bert("видео"))
+    pprint.pprint(exp.load_to_bert("видео на ютуб про кота"))

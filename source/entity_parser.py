@@ -6,8 +6,8 @@ from natasha import (
     NewsNERTagger,
     Doc,
 )
-from skill import Skill
-from utils import get_data_path
+from source.skill import Skill
+from source.utils import get_data_path
 import os
 import json
 from fuzzysearch import find_near_matches
@@ -69,4 +69,4 @@ class EntityParser(Skill):
 
 if __name__ == "__main__":
     exp1 = EntityParser()
-    print(exp1.get_answer("перевод на испанский"))
+    print(exp1.get_answer("перевод курсы по питону на английский"))

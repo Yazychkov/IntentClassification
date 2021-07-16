@@ -1,6 +1,6 @@
 import urllib.request
 from urllib.parse import quote
-from skill import Skill
+from source.skill import Skill
 import re
 
 
@@ -33,10 +33,11 @@ class VideoIntent(Skill):
             for link in self.data[: self.count_search_video]:
                 self.res_data.append(self.video_link + link)
         res_string = " ".join(self.res_data)
+        self.res_data.clear(), self.data.clear()
         return res_string
 
 
 if __name__ == "__main__":
     video1 = VideoIntent()
-    print(video1.get_answer("video"))
-
+    print(video1.get_answer("как построить дом"))
+    print(video1.get_answer("про котов"))

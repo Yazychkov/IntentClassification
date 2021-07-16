@@ -1,7 +1,7 @@
 import torch
 from transformers import AutoTokenizer, AutoModel
 import numpy
-from utils import get_data_model_path
+from source.utils import get_data_model_path
 
 
 class Embedder:

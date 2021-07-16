@@ -1,12 +1,12 @@
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 import logging
-from skillserver import Skillserver
+from source.skillserver import Skillserver
 import os
 
 
 class TelegramChecker:
     def __init__(self):
-        self.updater = Updater(os.environ['API_KEY_TELEGRAM_IC'], use_context=True)
+        self.updater = Updater('KEY', use_context=True)
         self.dp = self.updater.dispatcher
         self.serverskill = Skillserver()
 
@@ -29,5 +29,9 @@ class TelegramChecker:
             update.message.reply_text(answer)
         except:
             update.message.reply_text(
-                "Технические неполадки, пожалуйста, попробуйте позднее."
+                "Причина {}".format(self.serverskill.get_answer(text))
             )
+
+if __name__ == "__main__":
+    telegram_bot = TelegramChecker()
+    telegram_bot.run()

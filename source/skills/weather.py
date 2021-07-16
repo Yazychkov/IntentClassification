@@ -53,7 +53,7 @@ class WeatherIntent(Skill):
                     "q": city_name,
                     "units": "metric",
                     "lang": "ru",
-                    "APPID": os.environ['API_KEY_WEATHER'],
+                    "APPID": 'KEY',
                 },
             )
             data = res.json()

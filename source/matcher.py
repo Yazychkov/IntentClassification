@@ -1,6 +1,6 @@
 import json
-from utils import get_data_path
-from approximate_nn import Approximator
+from source.utils import get_data_path
+from source.approximate_nn import Approximator
 import os
 
 

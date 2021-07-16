@@ -1,6 +1,6 @@
 from random import choice
-from skill import Skill
-from utils import get_data_path
+from source.skill import Skill
+from source.utils import get_data_path
 import os
 
 class HumorIntent(Skill):

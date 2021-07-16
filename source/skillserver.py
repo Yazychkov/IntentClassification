@@ -1,15 +1,15 @@
-from matcher import Matcher
+from source.matcher import Matcher
 
 
-from skills.humor import HumorIntent
-from skills.weather import WeatherIntent
-from skills.video import VideoIntent
-from skills.translate import TranslatorIntent
+from source.skills.humor import HumorIntent
+from source.skills.weather import WeatherIntent
+from source.skills.video import VideoIntent
+from source.skills.translate import TranslatorIntent
 
 # from skills.calculator import CalcIntent
 # from skills.location import LocationIntent
 # from skills.search import SearchIntent
-from entity_parser import EntityParser
+from source.entity_parser import EntityParser
 
 
 class Skillserver:
@@ -20,7 +20,7 @@ class Skillserver:
             "weather": WeatherIntent(),
             "video": VideoIntent(),
             # "calculator": CalcIntent(),
-            "translator": TranslatorIntent(),
+            "translate": TranslatorIntent(),
             # "search": SearchIntent(),
             # "location": LocationIntent(),
             "humor": HumorIntent(),
@@ -31,7 +31,9 @@ class Skillserver:
 
     def get_answer(self, phrase, context=None) -> str:
         res = self.matcher.match(phrase)
+        print(res)
         intent_result = self.check_intent(res)
+        print(intent_result)
         if intent_result:
             if not context:
                 context = dict()
@@ -46,4 +48,4 @@ class Skillserver:
 
 if __name__ == "__main__":
     exp1 = Skillserver()
-    print(exp1.get_answer("погода в"))
+    print(exp1.get_answer("видео на ютуб про кота"))
