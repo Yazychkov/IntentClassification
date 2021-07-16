@@ -42,5 +42,5 @@ if __name__ == "__main__":
     tr1 = TranslatorIntent()
     tr1.load_data()
     context = {}
-    context["res_parser"] = {'lang': {'translate': 'слон', 'language': 'en'}}
+    context["res_parser"] = {'lang': {'translate': 'диван', 'language': 'en'}}
     print(tr1.get_answer("слон на испанский",context))
