@@ -6,7 +6,7 @@ import os
 
 class TelegramChecker:
     def __init__(self):
-        self.updater = Updater('KEY', use_context=True)
+        self.updater = Updater('1754548411:AAE9nLI29a2JDtzE962IiawQ-5cU6txNrPM', use_context=True)
         self.dp = self.updater.dispatcher
         self.serverskill = Skillserver()
 

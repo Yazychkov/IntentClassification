@@ -10,7 +10,7 @@ class VideoIntent(Skill):
         self.res_data = list()
         self.search_query_link = "https://www.youtube.com/results?search_query="
         self.video_link = "https://www.youtube.com/watch?v="
-        self.max_id_vide_link = 11
+        self.max_id_video_link = 11
         self.count_search_video = 3
 
     def load_data(self) -> None:
@@ -25,7 +25,7 @@ class VideoIntent(Skill):
         match = re.findall('\?v\=(.+?)"', html)
         if match is not None:
             for link in match:
-                if len(link) <= self.max_id_vide_link:
+                if len(link) <= self.max_id_video_link:
                     self.data.append(link)
         if not self.data:
             self.res_data.append("Проверьте правильность ввода данных")

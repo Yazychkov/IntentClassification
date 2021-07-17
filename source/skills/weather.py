@@ -53,7 +53,7 @@ class WeatherIntent(Skill):
                     "q": city_name,
                     "units": "metric",
                     "lang": "ru",
-                    "APPID": 'KEY',
+                    "APPID": '35585635df2f03989406acff2c566db8',
                 },
             )
             data = res.json()
